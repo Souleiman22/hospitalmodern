@@ -1,0 +1,661 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root {
+    /* Define CSS variables for colors */
+    --blue: #7F00FF;  /* Custom blue color */
+    --black: rgb(0, 0, 0);  /* Black color using RGB */
+    --wigth: #fff;  /* White color (note: it seems like there is a typo, it should be --white) */
+}
+
+* {
+    margin: 0;  /* Reset margin for all elements */
+    padding: 0;  /* Reset padding for all elements */
+    box-sizing: border-box;  /* Include padding and border in element's total width and height */
+    font-family: "Roboto", sans-serif;  /* Set the default font family to Roboto */
+    text-decoration: none;  /* Remove text decorations (like underlines) */
+    text-transform: capitalize;  /* Capitalize the first letter of each word */
+    outline: none;  /* Remove outline from elements when focused */
+    transition: all linear .2s;  /* Smooth transition for all properties over 0.2 seconds */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+}
+
+html {
+    font-size: 62.5%;  /* Set base font size to 62.5% of the default, making 1rem = 10px */
+    overflow-x: hidden;  /* Prevent horizontal scrolling */
+}
+
+/* Style pour le bouton de base */
+.button {
+    width: 15rem; /* Largeur du bouton */
+    height: 3.5rem; /* Hauteur du bouton */
+    background: var(--blue); /* Couleur de fond du bouton, utilisant une variable CSS */
+    color: var(--wigth); /* Couleur du texte du bouton, utilisant une variable CSS (devrait être --white) */
+    font-size: 1.7rem; /* Taille de la police du texte dans le bouton */
+    text-transform: capitalize; /* Mettre la première lettre de chaque mot en majuscule */
+    border-radius: .5rem; /* Coins arrondis du bouton */
+    cursor: pointer; /* Changer le curseur en forme de main lorsque l'utilisateur survole le bouton */
+    margin: 1rem 0; /* Marge en haut et en bas du bouton */
+    border: .1rem solid var(--blue); /* Bordure du bouton, utilisant une variable CSS */
+}
+
+/* Style pour le bouton lorsqu'il est survolé par la souris */
+.button:hover {
+    border: .1rem solid var(--blue); /* Maintenir la bordure du bouton lors du survol */
+    background: var(--wigth); /* Changer la couleur de fond à la couleur de texte précédente lors du survol (devrait être --white) */
+    color: var(--blue); /* Changer la couleur du texte à la couleur de fond précédente lors du survol */
+    letter-spacing: .2rem; /* Ajouter de l'espacement entre les lettres lors du survol */
+}
+
+/* Style pour le titre principal */
+.title {
+    text-align: center; /* Centrer le texte */
+    padding: 0rem 1rem; /* Espacement interne à droite et à gauche */
+    font-size: 2.5rem; /* Taille de la police */
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+    font-weight: 300; /* Épaisseur de la police */
+}
+
+/* Style pour les en-têtes secondaires */
+.heading {
+    text-align: center; /* Centrer le texte */
+    font-size: 4rem; /* Taille de la police */
+    padding: 1rem; /* Espacement interne tout autour */
+    padding-top: 8rem; /* Espacement interne en haut */
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+    letter-spacing: .1rem; /* Espacement entre les lettres */
+}
+
+/* Style pour l'en-tête principal de la page */
+header {
+    width: 96%; /* Largeur de l'en-tête */
+    background: var(--wigth); /* Couleur de fond, utilisant une variable CSS (devrait être --white) */
+    position: fixed; /* Position fixe en haut de la page */
+    top: 2rem; /* Position de l'en-tête par rapport au haut de la page */
+    left: 50%; /* Centrer horizontalement l'en-tête */
+    transform: translate(-50%); /* Ajuster la position pour centrer */
+    display: flex; /* Utiliser le modèle flexbox */
+    align-items: center; /* Aligner les éléments au centre verticalement */
+    justify-content: space-between; /* Espacer les éléments uniformément */
+    padding: 1rem 2rem; /* Espacement interne */
+    z-index: 1000; /* Placer l'en-tête au-dessus des autres éléments */
+}
+
+/* Style pour les liens dans l'en-tête */
+header a {
+    color: var(--black); /* Couleur du texte */
+}
+
+/* Style pour les liens au survol */
+header a:hover {
+    color: var(--blue); /* Changer la couleur du texte au survol */
+}
+
+/* Style pour le logo dans l'en-tête */
+header .logo {
+    font-size: 3rem; /* Taille de la police du logo */
+}
+
+/* Style pour la partie du logo */
+header .logo span {
+    color: var(--blue); /* Couleur de texte pour une partie du logo */
+}
+
+/* Style pour la barre de navigation */
+header .navbar ul {
+    display: flex; /* Utiliser le modèle flexbox */
+    align-items: center; /* Aligner les éléments au centre verticalement */
+    justify-content: space-between; /* Espacer les éléments uniformément */
+    list-style: none; /* Enlever les puces des éléments de liste */
+}
+
+/* Style pour les éléments de la liste dans la barre de navigation */
+header .navbar ul li {
+    margin: 0 1rem; /* Espacement entre les éléments de la liste */
+}
+
+/* Style pour les liens dans les éléments de la liste */
+header .navbar ul li a {
+    font-size: 2rem; /* Taille de la police */
+    color: var(--black); /* Couleur du texte */
+}
+
+/* Style pour les liens au survol dans les éléments de la liste */
+header .navbar ul li a:hover {
+    color: var(--blue); /* Changer la couleur du texte au survol */
+}
+
+/* Style pour l'icône de menu (barres) */
+header .fa-bars {
+    font-size: 3rem; /* Taille de l'icône */
+    color: var(--blue); /* Couleur de l'icône */
+    cursor: pointer; /* Changer le curseur en forme de main */
+    display: none; /* Cacher l'icône par défaut */
+}
+
+/* Style pour l'icône de menu (croix) */
+header .fa-times {
+    transform: rotate(180deg); /* Faire tourner l'icône de 180 degrés */
+}
+
+/* Style pour l'en-tête actif (lors du défilement) */
+.header-active {
+    top: 0; /* Positionner l'en-tête en haut */
+    width: 100%; /* Largeur complète de l'en-tête */
+    box-shadow: .1rem .3rem rgba(0,0,0,.3); /* Ombre portée pour l'effet de profondeur */
+}
+
+/* Section d'accueil (home) */
+.home {
+    min-height: 100vh; /* Hauteur minimale de 100% de la hauteur de la fenêtre */
+    padding-top: 10rem; /* Espacement en haut pour décaler le contenu vers le bas */
+}
+
+/* Style pour la ligne dans la section d'accueil */
+.home .row {
+    display: flex; /* Utiliser le modèle flexbox */
+    align-items: center; /* Aligner les éléments au centre verticalement */
+    justify-content: space-around; /* Espacer les éléments uniformément */
+    width: 85%; /* Largeur de 85% du conteneur parent */
+    margin: 0 auto; /* Centrer la ligne horizontalement */
+}
+
+/* Style pour les images dans la section d'accueil */
+.home .row .images img {
+    height: 75vh; /* Hauteur des images à 75% de la hauteur de la fenêtre */
+}
+
+/* Style pour le titre principal dans la section d'accueil */
+.home .content h1 {
+    font-size: 4rem; /* Taille de la police */
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Style pour une partie du titre principal */
+.home .content h1 span {
+    color: var(--blue); /* Couleur de texte, utilisant une variable CSS */
+}
+
+/* Style pour le paragraphe dans la section d'accueil */
+.home .content p {
+    font-size: 1.9rem; /* Taille de la police */
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Style pour le texte bleu */
+.blue {
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Section "about" (à propos) */
+.about {
+    background: #f9f9f9; /* Couleur de fond */
+}
+
+/* Style pour les conteneurs de boîte dans la section "about" */
+.about .box-container .box {
+    width: 75%; /* Largeur de 75% du conteneur parent */
+    margin: 4rem auto; /* Marge verticale de 4rem et centrage horizontal */
+    border-radius: .5rem; /* Coins arrondis */
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.3); /* Ombre portée pour l'effet de profondeur */
+    display: flex; /* Utiliser le modèle flexbox */
+    align-items: center; /* Aligner les éléments au centre verticalement */
+    overflow: hidden; /* Masquer le débordement des éléments enfants */
+    background: var(--wigth); /* Couleur de fond, utilisant une variable CSS (devrait être --white) */
+}
+
+/* Style pour les images dans les boîtes */
+.about .box-container .box .images {
+    width: 50%; /* Largeur de 50% du conteneur parent */
+    height: 40rem; /* Hauteur fixe de 40rem */
+}
+
+/* Style pour les images dans les conteneurs d'image */
+.about .box-container .box .images img {
+    width: 100%; /* Largeur de 100% du conteneur parent */
+    height: 100%; /* Hauteur de 100% du conteneur parent */
+}
+
+/* Style pour le contenu des boîtes */
+.about .box-container .box .content {
+    height: 100%; /* Hauteur de 100% du conteneur parent */
+    width: 50%; /* Largeur de 50% du conteneur parent */
+    padding: 2rem; /* Espacement interne de 2rem */
+}
+
+/* Style pour les titres dans le contenu des boîtes */
+.about .box-container .box .content h3 {
+    font-size: 3rem; /* Taille de la police */
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+    display: flex; /* Utiliser le modèle flexbox */
+    align-items: start; /* Aligner les éléments au début verticalement */
+}
+
+/* Style pour les paragraphes dans le contenu des boîtes */
+.about .box-container .box .content p {
+    font-size: 1.5rem; /* Taille de la police */
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+    padding: 1rem 0; /* Espacement vertical de 1rem */
+    text-align: start; /* Aligner le texte au début (gauche) */
+}
+
+/* Style pour les boîtes paires (2ème, 4ème, etc.) dans la section "about" */
+.about .box-container .box:nth-child(even) {
+    flex-flow: row-reverse; /* Inverser l'ordre des éléments en ligne */
+}
+
+/* Conteneur de boîtes pour la section des cartes */
+.card .box-container {
+    display: flex; /* Utiliser le modèle flexbox */
+    justify-content: center; /* Centrer les boîtes horizontalement */
+    flex-wrap: wrap; /* Permettre aux boîtes de passer à la ligne suivante si nécessaire */
+}
+
+/* Style pour chaque boîte dans la section des cartes */
+.card .box-container .box {
+    width: 30rem; /* Largeur de chaque boîte */
+    margin: 2rem 1rem; /* Marge extérieure de 2rem en haut/bas et 1rem à gauche/droite */
+    overflow: hidden; /* Masquer le débordement des éléments enfants */
+    border-radius: .5rem; /* Coins arrondis */
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.3); /* Ombre portée pour l'effet de profondeur */
+}
+
+/* Style pour les images dans chaque boîte */
+.card .box-container .box img {
+    height: 30rem; /* Hauteur de l'image */
+    width: 100%; /* Largeur de 100% du conteneur parent */
+    object-fit: cover; /* Redimensionner l'image pour couvrir le conteneur */
+}
+
+/* Style pour le contenu de chaque boîte */
+.card .box-container .box .content {
+    padding: 1rem 1.3rem; /* Espacement interne */
+}
+
+/* Style pour les titres dans le contenu des boîtes */
+.card .box-container .box .content h2 {
+    font-size: 2rem; /* Taille de la police */
+    text-align: center; /* Centrer le texte */
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Style pour les titres au survol dans le contenu des boîtes */
+.card .box-container .box .content h2:hover {
+    color: var(--blue); /* Changer la couleur du texte au survol */
+    text-decoration: underline; /* Souligner le texte au survol */
+}
+
+/* Style pour les paragraphes dans le contenu des boîtes */
+.card .box-container .box .content p {
+    font-size: 1.7rem; /* Taille de la police */
+    text-align: center; /* Centrer le texte */
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Style pour les icônes dans le contenu des boîtes */
+.card .box-container .box .content .icons {
+    text-align: center; /* Centrer le texte */
+}
+
+/* Style pour les liens des icônes dans le contenu des boîtes */
+.card .box-container .box .content .icons a {
+    font-size: 2rem; /* Taille de la police */
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+    text-align: center; /* Centrer le texte */
+    margin: 1rem; /* Marge extérieure */
+}
+
+/* Conteneur de boîtes pour la section des avis */
+.review .box-container {
+    display: flex; /* Utiliser le modèle flexbox */
+    justify-content: center; /* Centrer les boîtes horizontalement */
+    flex-wrap: wrap; /* Permettre aux boîtes de passer à la ligne suivante si nécessaire */
+    padding: 2rem 0; /* Espacement interne en haut et en bas */
+}
+
+/* Style pour chaque boîte dans la section des avis */
+.review .box-container .box {
+    width: 35rem; /* Largeur de chaque boîte */
+    text-align: center; /* Centrer le texte */
+    padding: 0 2rem; /* Espacement interne à gauche et à droite */
+    margin: 4rem 1.5rem; /* Marge extérieure de 4rem en haut/bas et 1.5rem à gauche/droite */
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.3); /* Ombre portée pour l'effet de profondeur */
+}
+
+/* Style pour les images dans chaque boîte de la section des avis */
+.review .box-container .box .images {
+    display: flex; /* Utiliser le modèle flexbox */
+    align-items: center; /* Aligner les éléments au centre verticalement */
+    text-align: left; /* Aligner le texte à gauche */
+    padding: .5rem 0; /* Espacement interne en haut et en bas */
+    border-top: .1rem solid #333; /* Bordure supérieure */
+}
+
+/* Style pour les images dans les conteneurs d'image de la section des avis */
+.review .box-container .box .images img {
+    height: 9rem; /* Hauteur de l'image */
+    width: 9rem; /* Largeur de l'image */
+    border-radius: 50%; /* Coins arrondis pour une forme circulaire */
+    object-fit: cover; /* Redimensionner l'image pour couvrir le conteneur */
+    margin: .8rem 1rem; /* Marge extérieure de 0.8rem en haut/bas et 1rem à gauche/droite */
+}
+
+/* Style pour les icônes dans la section des avis */
+.review .box-container .box i {
+    font-size: 6rem; /* Taille de l'icône */
+    margin-top: -3rem; /* Marge supérieure négative */
+    color: var(--blue); /* Couleur de l'icône, utilisant une variable CSS */
+    opacity: .4; /* Opacité pour rendre l'icône semi-transparente */
+}
+
+/* Style pour les paragraphes dans la section des avis */
+.review .box-container .box p {
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+    font-size: 1.7rem; /* Taille de la police */
+    padding: 2rem 0; /* Espacement interne en haut et en bas */
+}
+
+/* Style pour les titres dans la section des avis */
+.review .box-container .box .info h3 {
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+    font-size: 2rem; /* Taille de la police */
+}
+
+/* Style pour les sous-titres dans la section des avis */
+.review .box-container .box .info span {
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+    font-size: 2rem; /* Taille de la police */
+}
+
+/* Section de contact */
+.contact {
+    background: #eee; /* Couleur de fond */
+}
+
+/* Ligne dans la section de contact */
+.contact .row {
+    display: flex; /* Utiliser le modèle flexbox */
+    align-items: center; /* Aligner les éléments au centre verticalement */
+    justify-content: center; /* Centrer les éléments horizontalement */
+    padding: 5rem 0; /* Espacement interne en haut et en bas */
+}
+
+/* Images dans la ligne de contact */
+.contact .row .images img {
+    width: 50vw; /* Largeur de 50% de la largeur de la fenêtre */
+    height: 70vh; /* Hauteur de 70% de la hauteur de la fenêtre */
+}
+
+/* Conteneur de formulaire dans la ligne de contact */
+.contact .row .form-container {
+    width: 50%; /* Largeur de 50% du conteneur parent */
+    padding-right: 6rem; /* Espacement interne à droite */
+}
+
+/* Champs de saisie et textarea dans le formulaire */
+.contact .row .form-container input, 
+.contact .row .form-container textarea {
+    width: 100%; /* Largeur de 100% du conteneur parent */
+    height: 4rem; /* Hauteur des champs de saisie */
+    background: var(--wigth); /* Couleur de fond, utilisant une variable CSS (devrait être --white) */
+    border: none; /* Pas de bordure */
+    border-radius: 5rem; /* Coins arrondis */
+    padding: 0 1rem; /* Espacement interne à gauche et à droite */
+    margin: 1rem 0; /* Marge extérieure en haut et en bas */
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+    font-size: 1.7rem; /* Taille de la police */
+}
+
+/* Champs de saisie et textarea en focus */
+.contact .row .form-container input:focus, 
+.contact .row .form-container textarea:focus {
+    border: .2rem solid var(--blue); /* Bordure de 0.2rem solide */
+}
+
+/* Style spécifique pour le textarea */
+.contact .row .form-container textarea {
+    height: 20rem; /* Hauteur du textarea */
+    border-radius: 1rem; /* Coins arrondis */
+    padding: 1rem; /* Espacement interne */
+    resize: none; /* Désactiver la redimension des textarea */
+}
+
+/* Bouton de soumission du formulaire */
+.contact .row .form-container input[type="submit"] {
+    width: 17rem; /* Largeur du bouton */
+    background: var(--blue); /* Couleur de fond, utilisant une variable CSS */
+    color: var(--wigth); /* Couleur du texte, utilisant une variable CSS (devrait être --white) */
+    cursor: pointer; /* Curseur en forme de main au survol */
+    font-size: 2rem; /* Taille de la police */
+}
+
+/* Bouton de soumission au survol */
+.contact .row .form-container input[type="submit"]:hover {
+    background: var(--wigth); /* Couleur de fond au survol, utilisant une variable CSS (devrait être --white) */
+    color: var(--blue); /* Couleur du texte au survol, utilisant une variable CSS */
+    border: .2rem solid var(--blue); /* Bordure de 0.2rem solide au survol */
+}
+
+/* Conteneur de boîtes pour la section du blog */
+.blog .box-container {
+    display: flex; /* Utiliser le modèle flexbox */
+    justify-content: center; /* Centrer les boîtes horizontalement */
+    flex-wrap: wrap; /* Permettre aux boîtes de passer à la ligne suivante si nécessaire */
+}
+
+/* Style pour chaque boîte dans la section du blog */
+.blog .box-container .box {
+    width: 35rem; /* Largeur de chaque boîte */
+    margin: 2rem 1rem; /* Marge extérieure de 2rem en haut/bas et 1rem à gauche/droite */
+    overflow: hidden; /* Masquer le débordement des éléments enfants */
+    border-radius: .5rem; /* Coins arrondis */
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.3); /* Ombre portée pour l'effet de profondeur */
+}
+
+/* Style pour les images dans chaque boîte de la section du blog */
+.blog .box-container .box img {
+    width: 100%; /* Largeur de 100% du conteneur parent */
+    object-fit: cover; /* Redimensionner l'image pour couvrir le conteneur */
+}
+
+/* Contenu de chaque boîte dans la section du blog */
+.blog .box-container .box .content {
+    padding: 0 1.5rem; /* Espacement interne à gauche et à droite */
+}
+
+/* Style pour les titres dans le contenu des boîtes */
+.blog .box-container .box .content h2 {
+    font-size: 2rem; /* Taille de la police */
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Style pour les paragraphes dans le contenu des boîtes */
+.blog .box-container .box .content p {
+    font-size: 1.3rem; /* Taille de la police */
+    color: var(--black); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Section de pied de page */
+.footer {
+    background: var(--black); /* Couleur de fond, utilisant une variable CSS */
+    display: flex; /* Utiliser le modèle flexbox */
+    justify-content: center; /* Centrer les éléments horizontalement */
+    flex-wrap: wrap; /* Permettre aux éléments de passer à la ligne suivante si nécessaire */
+    padding: 2rem 0; /* Espacement interne en haut et en bas */
+}
+
+/* Style pour chaque boîte dans la section de pied de page */
+.footer .box {
+    width: 30rem; /* Largeur de chaque boîte */
+    margin: 2rem; /* Marge extérieure */
+    text-align: center; /* Centrer le texte */
+}
+
+/* Style pour la première boîte de la section de pied de page */
+.footer .box:nth-child(1) {
+    text-align: left; /* Aligner le texte à gauche */
+}
+
+/* Style pour le logo dans la section de pied de page */
+.footer .box .logo {
+    padding: 2rem 0; /* Espacement interne en haut et en bas */
+    font-size: 3rem; /* Taille de la police */
+    color: var(--wigth); /* Couleur du texte, utilisant une variable CSS (devrait être --white) */
+}
+
+/* Style pour le logo au survol */
+.footer .box .logo:hover {
+    color: var(--blue); /* Couleur du texte au survol, utilisant une variable CSS */
+}
+
+/* Style pour les parties du logo dans la section de pied de page */
+.footer .box .logo span {
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+}
+
+/* Style pour les paragraphes dans la section de pied de page */
+.footer .box p {
+    font-size: 1.5rem; /* Taille de la police */
+    color: var(--wigth); /* Couleur du texte, utilisant une variable CSS (devrait être --white) */
+}
+
+/* Style pour les liens dans la section de pied de page */
+.footer .box a {
+    color: var(--wigth); /* Couleur du texte, utilisant une variable CSS (devrait être --white) */
+    font-size: 2rem; /* Taille de la police */
+    display: block; /* Affichage en bloc */
+    padding: .2rem 0; /* Espacement interne en haut et en bas */
+}
+
+/* Style pour les liens au survol dans la section de pied de page */
+.footer .box a:hover {
+    text-decoration: underline; /* Souligner le texte au survol */
+}
+
+/* Style pour le crédit dans la section de pied de page */
+.footer .credit {
+    width: 85%; /* Largeur de 85% du conteneur parent */
+    padding-top: 1rem; /* Espacement interne en haut */
+    font-size: 2rem; /* Taille de la police */
+    color: var(--wigth); /* Couleur du texte, utilisant une variable CSS (devrait être --white) */
+    text-align: center; /* Centrer le texte */
+    border-top: .2rem solid var(--wigth); /* Bordure supérieure */
+}
+
+/* Style pour les parties du crédit dans la section de pied de page */
+.footer .credit span {
+    color: var(--blue); /* Couleur du texte, utilisant une variable CSS */
+    text-decoration: underline; /* Souligner le texte */
+    letter-spacing: .2rem; /* Espacement entre les lettres */
+}
+
+
+
+/* Media query pour les écrans avec une largeur maximale de 768px */
+@media (max-width: 768px) {
+    html {
+        font-size: 55%; /* Réduire la taille de la police de base pour les petits écrans */
+    }
+
+    /* Afficher l'icône du menu hamburger */
+    header .fa-bars {
+        display: block; /* Afficher le menu hamburger sur les petits écrans */
+    }
+
+    /* Style pour la barre de navigation */
+    header .navbar {
+        position: fixed; /* Position fixe pour que la barre de navigation reste en place */
+        top: -100rem; /* Position initiale en dehors de l'écran */
+        left: 0; /* Alignement à gauche */
+        width: 100%; /* Largeur de 100% */
+        background-color: var(--wigth); /* Couleur de fond, utilisant une variable CSS (devrait être --white) */
+        opacity: 0; /* Opacité initiale à 0 */
+    }
+
+    /* Style pour les éléments de la liste de la barre de navigation */
+    header .navbar ul {
+        flex-flow: column; /* Disposer les éléments en colonne */
+        padding: 2rem 0; /* Espacement interne en haut et en bas */
+    }
+
+    /* Style pour chaque élément de la liste */
+    header .navbar ul li {
+        margin: 1rem 0; /* Marge extérieure en haut et en bas */
+        width: 100%; /* Largeur de 100% */
+        text-align: center; /* Centrer le texte */
+    }
+
+    /* Style pour les liens dans les éléments de la liste */
+    header .navbar ul li a {
+        font-size: 3rem; /* Taille de la police */
+        display: block; /* Affichage en bloc */
+    }
+
+    /* Classe pour afficher la barre de navigation lorsqu'elle est activée */
+    header .nav-toggle {
+        top: 5.5rem; /* Position en haut */
+        opacity: 1; /* Rendre la barre de navigation visible */
+    }
+
+    /* Style pour la section home */
+    .home .row {
+        flex-flow: column; /* Disposer les éléments en colonne */
+    }
+
+    /* Centrer le contenu de la section home */
+    .home .row .content {
+        text-align: center; /* Centrer le texte */
+    }
+
+    /* Style pour les images dans la section home */
+    .home .row .images img {
+        width: 100%; /* Largeur de 100% du conteneur parent */
+    }
+
+    /* Style pour les boîtes dans la section about */
+    .about .box-container .box {
+        flex-flow: column; /* Disposer les éléments en colonne */
+        width: 90%; /* Largeur de 90% du conteneur parent */
+    }
+
+    /* Style pour chaque boîte paire dans la section about */
+    .about .box-container .box:nth-child(even) {
+        flex-flow: column; /* Disposer les éléments en colonne */
+    }
+
+    /* Style pour les images dans chaque boîte de la section about */
+    .about .box-container .box .images {
+        width: 100%; /* Largeur de 100% du conteneur parent */
+    }
+
+    /* Style pour le contenu dans chaque boîte de la section about */
+    .about .box-container .box .content {
+        width: 100%; /* Largeur de 100% du conteneur parent */
+    }
+
+    /* Style pour la section de contact */
+    .contact .row {
+        flex-flow: column; /* Disposer les éléments en colonne */
+    }
+
+    /* Style pour les images dans la section de contact */
+    .contact .row .images img {
+        width: 90vw; /* Largeur de 90% de la largeur de la fenêtre */
+        height: 50vh; /* Hauteur de 50% de la hauteur de la fenêtre */
+    }
+
+    /* Style pour le conteneur de formulaire dans la section de contact */
+    .contact .row .form-container {
+        width: 90%; /* Largeur de 90% du conteneur parent */
+        padding: 0; /* Pas d'espacement interne */
+    }
+}
+
+/* Style pour la classe .copie */
+.copie {
+    margin: 5px 0; /* Marge extérieure en haut et en bas */
+}
+
+/* Style pour la classe .copie */
+.copie {
+    font-size: 12px; /* Taille de la police réduite pour le texte de l'avertissement */
+    color: #666; /* Couleur de texte plus claire pour l'avertissement */
+}
